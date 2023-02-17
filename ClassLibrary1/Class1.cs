@@ -9,8 +9,31 @@ namespace ClassLibrary1
 {
     public class Persona
     {
-        public string nome;
-        public readonly int età = 10;
+        public static int Count { get; set; }
+        public string Nome { get; set; }
+
+        ~Persona()
+        {
+            Count--;
+        }
+        public Persona()
+        {
+            Count++;
+        }
+
+        //public string GetNomeCompleto(string cognome)
+        //{
+        //    cognome = "verdi";
+        //    return $"{Nome} - {cognome}";
+        //}
+
+        public static string GetNomeCompleto(Persona p, string cognome)
+        {
+            //Persona p = quello che gli ho passato
+            p.Nome = "Luca";
+            return $"{p.Nome} - {cognome}";
+        }
+        
     }
 
     public class Utente : Persona
@@ -28,23 +51,15 @@ namespace ClassLibrary1
                 _password = value;
             }
         }
-
         public DateTime DataDiNascita { get; set; }
-        public int Età => DateTime.Now.Year - DataDiNascita.Year;
-
-        public int NameLength
-        {
-            get
-            {
-                return nome.Length;
-            }
-        }
-
+      
         public string Password2 { get; set; }
 
-        public void Method1()
+        public string GetAge()
         {
-
+            return (DateTime.Now.Year - DataDiNascita.Year).ToString();
         }
     }
+
+
 }

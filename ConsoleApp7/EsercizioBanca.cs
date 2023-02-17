@@ -4,7 +4,9 @@ namespace ConsoleApp7
 {
     public class Banca
     {
+        public const int numero = 10;
         public readonly string indirizzo = "via dei mille";
+        public int Id { get; set; }
         public string Nome { get; set; } = "ING";
         public string Codice { get; set; }
         public Cliente[] Clienti { get; set; } = new Cliente[10];
@@ -13,6 +15,13 @@ namespace ConsoleApp7
         public Banca(string nome)
         {
             Nome = nome;
+            indirizzo = "via del campo";
+        }
+        public Banca(int id, string codice)
+        {
+            Codice = codice;
+            Id = id;
+            indirizzo = "via del fiore";
         }
 
         ~Banca()
