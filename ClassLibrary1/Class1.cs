@@ -36,6 +36,17 @@ namespace ClassLibrary1
         
     }
 
+    public class Autore
+    {
+        public string Nome { get; set; }
+        public string Cognome { get; set; }
+        public string Codice { get; set; }
+    }
+
+    public class Libro
+    {
+
+    }
     public class Utente : Persona
     {
         private string _password;

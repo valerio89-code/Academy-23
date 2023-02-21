@@ -1,8 +1,10 @@
 ﻿using ClassLibrary1;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Common;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
@@ -12,73 +14,70 @@ namespace ConsoleApp7
 {
     internal class Program
     {
-        //fare un applicazione che gestisca un ecommerce di libri
-        /*
-         Account che definisce uno user account {getOrdini, compra}
-         Carrello che definisce un carrello {aggiungi libro, rimuovi libro, getTotale}
-         Libro che definisce un elemento {}
-         Autore che definisce l'autore di un libro {}
-         Ordine {}
-         
-         */
         static void Main(string[] args)
         {
-            var arrOut = new int[] { 1, 2, 34 };
-            int result = Helper.Somma(arrOut);
-            Helper.Somma(1, 2);
-            Console.WriteLine(Helper.Somma(1, 2, 34, 2, 3, 5, 2, 2, 45));
-            Console.WriteLine(result);
-            Console.WriteLine(arrOut[2]);
+
+            /*
+             agenzia: {immobili{codice, tipologia, prezzo, città, superficie}}
+             mostraImmobili(string ordinatiPer [codice, prezzo,città,superficie])
+             aggiungiImmobile(codice, tipologia, prezzo, città, superficie) //CODICE DEVE ESSERE UNIVOCO
+             rimuoviImmobile()
+            getImmobilePiùCaro()
+            getImmobilePiùGrande()
+            getValoreTotaleImmobili()
+             */
+            var l = new List<Autore>
+            {
+                new Autore { Cognome = "rossi", Nome = "Mario", Codice = "rm1" },
+                new Autore { Cognome = "verdi", Nome = "Mario", Codice = "vm1" },
+                new Autore { Cognome = "rossi", Nome = "Luca", Codice = "rl1" },
+                new Autore { Cognome = "Bianchi", Nome = "Gino", Codice = "bg1" },
+                new Autore { Cognome = "blu", Nome = "Andrea", Codice = "ba1" }
+            };
+            
+            
+            //var l2 = new List<Autore>();
+            //l2.Add(l[0]);
+            l.Remove(new Autore());
+            string searchString = Console.ReadLine();
+            //action, predicate, func
+            Func<int, int, string> somma = (n1, n2) => { return (n1 + n2).ToString(); };
+            List<Autore> marios = l.FindAll((f) => f.Nome == searchString);
+
+            if (l.Exists(a => a.Nome == "mario"))
+            {
+                Console.WriteLine("exist: esiste almeno un mario");
+            }
+            //LINQ
+            if (l.Any(a => a.Nome == "mario"))
+            {
+                Console.WriteLine("any: esiste almeno un mario");
+            }
+
+            Console.WriteLine(l.Count);
             Console.ReadLine();
         }
     }
 
-    public class Helper
+    public class Catalogo<T>
     {
-        public static int Somma(params int[] arr)
+        private List<T> _elenco = new List<T>();
+
+        public void Add(T item)
         {
-            arr[2] = 100;
-            int somma = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                somma += arr[i];
-            }
-            return somma;
+            _elenco.Add(item);
         }
 
-        public static Persona ChangeNome(Persona p = null)
+        public int GetCount()
         {
-            //Persona p = p1
-            p = new Persona();
-            p.Nome = "NOME CAMBIATO";
-            return p;
+            return _elenco.Count;
+        }
+
+        public T GetFirst()
+        {
+            return _elenco.FirstOrDefault();
         }
     }
 
-    public class Calcolatrice
-    {
-        public const int defaultValue = 10;
-        public readonly int years = DateTime.Now.Year;
 
-        public static string GetNome(Persona p = null)
-        //Persona p = p2
-        {
-            p = new Persona();
-            return p.Nome;
-        }
-
-        public static string DoNothing(string n1)
-        {
-            return n1;
-        }
-        public static int DoNothing(int n1)
-        {
-            return n1;
-        }
-
-        public static int Somma(int n1, int n2, int n3 = defaultValue)
-        {
-            return n1 + n2 + n3;
-        }
-    }
 }
