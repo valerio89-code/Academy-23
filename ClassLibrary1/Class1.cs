@@ -45,7 +45,7 @@ namespace ClassLibrary1
 
     public class Libro
     {
-
+        public string Titolo { get; set; }
     }
     public class Utente : Persona
     {
