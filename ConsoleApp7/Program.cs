@@ -1,17 +1,8 @@
-﻿using ClassLibrary1;
+﻿
+
+using CSVM;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Common;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ConsoleApp7
 {
@@ -21,9 +12,7 @@ namespace ConsoleApp7
         {
             /*
              Dato un file in formato csv,il cui tracciato record è:
-
 Nome;Cognome;Materia;Voto
-
 Sviluppare una libreria che implementi le seguenti funzioni (metodi statici):
 A)inserisci studente Dammi il nome. dammi il cognome. dammi la materia. dammi il voto.
 1)  Caricamento in una lista dei dati del file. 
@@ -35,50 +24,43 @@ A)inserisci studente Dammi il nome. dammi il cognome. dammi la materia. dammi il
 
 Sviluppare una console application per richiamare le funzioni della libreria.
             */
-
-
-            var l = new List<Persona>();
-            l.Add(new Persona() { Cognome = "Valdes", Nome = "Valerio", Telefono = "356858457" });
-            l.Add(new Persona() { Cognome = "Fiori", Nome = "Valerio", Telefono = "3587474856" });
-            l.Add(new Persona() { Cognome = "Rossi", Nome = "Lucrezio", Telefono = "3456989965" });
-            l.Add(new Persona() { Cognome = "Verdi", Nome = "Gigi", Telefono = "3216565654" });
-
-            using (var sw = new StreamWriter("C:\\Users\\Valerio\\Source\\Repos\\ConsoleApp7\\FilePersone.csv"))
+            var path = "C:\\Users\\Valerio\\Source\\Repos\\ConsoleApp7\\FileStudenti.csv";
+            while (true)
             {
-                foreach (var p in l)
+                Console.WriteLine("Inserire OK per inserire gli utenti nel CSV. inserire exit per terminare l'inserimento");
+                var input = Console.ReadLine();
+                if (input.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    sw.WriteLine($"{p.Nome};{p.Cognome};{p.Telefono}");
+                    Console.WriteLine("inserimento studenti terminato");
+                    break;
                 }
+                CSVManager.AddStudent(path);
             }
-            //using(var sr = new StreamReader("C:\\Users\\Valerio\\Source\\Repos\\ConsoleApp7\\FileEsempio.txt"))
-            //{
-            //    while (!sr.EndOfStream)
-            //    {
-            //        Console.WriteLine(sr.ReadLine());
-            //    }
-            //}
 
+            var esami = CSVManager.ReadCsv(path);
+            Console.WriteLine(CSVManager.GetAvg(esami));
+            Console.WriteLine(CSVManager.GetAvgByStudent("valerio", "valdes", esami));
+            //var auto = new Auto() { Modello = "fiat" };
+            //var persona = new Persona(auto) { Nome = "valerio" };
+            //Console.WriteLine(persona.Auto.Modello);
         }
 
-        public static void AddStudent(string path)
-        {
-            using (var sw = new StreamWriter(path, true))
-            {
-                Console.WriteLine("dammi il nome");
-                var nome = Console.ReadLine();
-                Console.WriteLine("dammi il cognome");
-                var cognome = Console.ReadLine();
 
-
-                sw.WriteLine($"{nome};{cognome};.....");
-            }
-        }
     }
-
+    public class Auto
+    {
+        public string Modello { get; set; }
+    }
+    
     public class Persona
     {
+        public readonly Auto Auto;
         public string Nome { get; set; }
         public string Cognome { get; set; }
         public string Telefono { get; set; }
+        public Persona(Auto a)
+        {
+            Auto = a;
+        }
     }
 }

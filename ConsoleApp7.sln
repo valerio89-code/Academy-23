@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp7", "ConsoleApp7\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{5CFCF12D-9EE4-42EB-A5C0-2C10999D667F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVManager", "CSVManager\CSVManager.csproj", "{B4B2FEA9-260F-4C12-A2C2-1AE40363DF21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5CFCF12D-9EE4-42EB-A5C0-2C10999D667F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CFCF12D-9EE4-42EB-A5C0-2C10999D667F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CFCF12D-9EE4-42EB-A5C0-2C10999D667F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B2FEA9-260F-4C12-A2C2-1AE40363DF21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B2FEA9-260F-4C12-A2C2-1AE40363DF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B2FEA9-260F-4C12-A2C2-1AE40363DF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B2FEA9-260F-4C12-A2C2-1AE40363DF21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
