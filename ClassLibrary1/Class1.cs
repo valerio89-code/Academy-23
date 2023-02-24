@@ -7,33 +7,67 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public class Persona
+    public class Calcolatrice
     {
-        public static int Count { get; set; }
-        public string Nome { get; set; }
-
-        ~Persona()
+        /// <summary>
+        /// calcola la parte intera della divisione tra due numeri scelti da tastiera
+        /// </summary>
+        /// <returns>Restituisce un intero</returns>
+        /// <exception cref="DivideByZeroException"></exception>
+        public int GetDivisione()
         {
-            Count--;
-        }
-        public Persona()
-        {
-            Count++;
-        }
+            int divisione = 0,
+                n1 = 0,
+                n2 = 0;
+            try
+            {
+                Console.WriteLine("Inserisci il primo numero");
+                var a = Console.ReadLine();
+                if (a != null) n1 = int.Parse(a);
+                Console.WriteLine("Inserisci il secondo numero");
+                n2 = int.Parse(Console.ReadLine());
+                divisione = Calculator.Divide(n1, n2);
+            }
+           finally
+            {
+                Console.WriteLine("ESECUZIONE IN OGNI CASO");
+                Console.WriteLine("Inserisci il secondo numero");
+            }
 
-        //public string GetNomeCompleto(string cognome)
-        //{
-        //    cognome = "verdi";
-        //    return $"{Nome} - {cognome}";
-        //}
+            
 
-        public static string GetNomeCompleto(Persona p, string cognome)
-        {
-            //Persona p = quello che gli ho passato
-            p.Nome = "Luca";
-            return $"{p.Nome} - {cognome}";
+            return divisione;
         }
-        
+    }
+
+    public static class Calculator
+    {
+        public static int Divide(int n1, int n2)
+        {
+            return n1 / n2;
+        }
+    }
+
+    public class Esame
+    {
+        public string Matricola { get; private set; }
+        public string Materia { get; private set; }
+        public float Voto { get; private set; }
+        public Esame(string matr, string materia, float voto)
+        {
+            if (voto < 0 || voto > 10) throw new VotoException();
+            Matricola = matr;
+            Materia = materia;
+            Voto = voto;
+        }
+    }
+
+    public class VotoException : Exception
+    {
+        public VotoException() : base("Il voto deve essere compreso tra 1 e 10")
+        {
+
+        }
     }
 
     public class Autore
@@ -47,7 +81,7 @@ namespace ClassLibrary1
     {
         public string Titolo { get; set; }
     }
-    public class Utente : Persona
+    public class Utente
     {
         private string _password;
         public string Password
@@ -63,7 +97,7 @@ namespace ClassLibrary1
             }
         }
         public DateTime DataDiNascita { get; set; }
-      
+
         public string Password2 { get; set; }
 
         public string GetAge()

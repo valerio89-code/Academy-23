@@ -25,16 +25,16 @@ namespace CSVM
             }
         }
 
-        public static List<Esame> ReadCsv(string path)
+        public static List<EsameConVoto> ReadCsv(string path)
         {
-            var result = new List<Esame>();
+            var result = new List<EsameConVoto>();
             using (var sr = new StreamReader(path))
             {
                 while (!sr.EndOfStream)
                 {
                     var str = sr.ReadLine();
                     var splitted = str.Split(';');
-                    result.Add(new Esame()
+                    result.Add(new EsameConVoto()
                     {
                         Nome = splitted[0],
                         Cognome = splitted[1],
@@ -47,45 +47,45 @@ namespace CSVM
             return result;
         }
 
-        public static float GetAvg(List<Esame> list)
+        public static float GetAvg(List<EsameConVoto> list)
         {
             var voti = list.Select(x => x.Voto).ToList();
             return voti.Average();
         }
 
-        public static float GetMax(List<Esame> list)
+        public static float GetMax(List<EsameConVoto> list)
         {
             var voti = list.Select(x => x.Voto).ToList();
             return voti.Max();
         }
-        public static float GetMin(List<Esame> list)
+        public static float GetMin(List<EsameConVoto> list)
         {
             var voti = list.Select(x => x.Voto).ToList();
             return voti.Min();
         }
 
-        public static float GetAvgBySubject(string input, List<Esame> list)
+        public static float GetAvgBySubject(string input, List<EsameConVoto> list)
         {
             var voti = list.Where(x => x.Materia.Equals(input, StringComparison.InvariantCultureIgnoreCase))
                 .Select(x => x.Voto);
             return voti.Average();
         }
 
-        public static float GetAvgByStudent(string nome, string cognome, List<Esame> list)
+        public static float GetAvgByStudent(string nome, string cognome, List<EsameConVoto> list)
         {
             return list.Where(x => x.Nome.Equals(nome, StringComparison.InvariantCultureIgnoreCase)
                                         && x.Cognome.Equals(cognome, StringComparison.InvariantCultureIgnoreCase))
                 .Select(x => x.Voto).Average();
         }
 
-        public static List<Esame> GetEsamiByStudent(string nome, string cognome, List<Esame> list)
+        public static List<EsameConVoto> GetEsamiByStudent(string nome, string cognome, List<EsameConVoto> list)
         {
             return list.Where(x => x.Nome.Equals(nome, StringComparison.InvariantCultureIgnoreCase)
                                         && x.Cognome.Equals(cognome, StringComparison.InvariantCultureIgnoreCase)).ToList();
         }
     }
 
-    public class Esame
+    public class EsameConVoto
     {
         public string Nome { get; set; }
         public string Cognome { get; set; }
