@@ -1,0 +1,50 @@
+[
+    {
+        "Nome": "valerio",
+        "Cognome": "valdes",
+        "Materia": "inglese",
+        "Voto": 7,
+        "Docente": {
+            "Nome": "marco",
+            "Cognome": "Verdi"
+        }
+    },
+    {
+        "Nome": "mario",
+        "Cognome": "rossi",
+        "Materia": "inglese",
+        "Voto": 10,
+        "Docente": null
+    },
+    {
+        "Nome": "luca",
+        "Cognome": "verdi",
+        "Materia": "italiano",
+        "Voto": 10,
+        "Docente": null
+    },
+    {
+        "Nome": "gino",
+        "Cognome": "paoli",
+        "Materia": "matematica",
+        "Voto": 9,
+        "Docente": null
+    },
+    {
+        "Nome": "mario",
+        "Cognome": "verdi",
+        "Materia": "matamatica",
+        "Voto": 10,
+        "Docente": null
+    },
+    {
+        "Nome": "leo",
+        "Cognome": "gullotta",
+        "Materia": "inglese",
+        "Voto": 5,
+        "Docente": {
+            "Nome": "marco",
+            "Cognome": "Verdi"
+        }
+    }
+]

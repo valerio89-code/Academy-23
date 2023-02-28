@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEsame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Esame>
+    <Nome>valerio</Nome>
+    <Cognome>valdes</Cognome>
+    <Materia>inglese</Materia>
+    <Voto>7</Voto>
+    <Docente>
+      <Nome>marco</Nome>
+      <Cognome>Verdi</Cognome>
+    </Docente>
+  </Esame>
+  <Esame>
+    <Nome>mario</Nome>
+    <Cognome>rossi</Cognome>
+    <Materia>inglese</Materia>
+    <Voto>10</Voto>
+  </Esame>
+  <Esame>
+    <Nome>luca</Nome>
+    <Cognome>verdi</Cognome>
+    <Materia>italiano</Materia>
+    <Voto>10</Voto>
+  </Esame>
+  <Esame>
+    <Nome>gino</Nome>
+    <Cognome>paoli</Cognome>
+    <Materia>matematica</Materia>
+    <Voto>9</Voto>
+  </Esame>
+  <Esame>
+    <Nome>mario</Nome>
+    <Cognome>verdi</Cognome>
+    <Materia>matamatica</Materia>
+    <Voto>10</Voto>
+  </Esame>
+  <Esame>
+    <Nome>leo</Nome>
+    <Cognome>gullotta</Cognome>
+    <Materia>inglese</Materia>
+    <Voto>5</Voto>
+    <Docente>
+      <Nome>marco</Nome>
+      <Cognome>Verdi</Cognome>
+    </Docente>
+  </Esame>
+</ArrayOfEsame>
